@@ -40,7 +40,12 @@ export default function AppTodo() {
     <div className="App justify-center items-center">
       <div className="rounded-xl shadow-lg card-size">
         <TodoHeader changeMode={changeMode} mode={mode} />
-        <TodoList list={list} checkTodo={checkTodo} deleteTodo={deleteTodo} />
+        <TodoList
+          mode={mode}
+          list={list}
+          checkTodo={checkTodo}
+          deleteTodo={deleteTodo}
+        />
         <TodoBottom addTodo={addTodo} />
       </div>
     </div>
