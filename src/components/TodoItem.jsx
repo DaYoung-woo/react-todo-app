@@ -1,12 +1,14 @@
-export default function TodoItem({ text, isCompleted }) {
+export default function TodoItem({ text, isComplete, checkTodo }) {
   return (
     <li className="pt-2 flex justify-between">
       <div className="flex items-center">
+        {isComplete}
         <input
           type="checkbox"
           className="accent-sky-600"
           id={text}
-          checked={isCompleted}
+          checked={isComplete}
+          onClick={() => checkTodo(text)}
         />
         <label htmlFor="test" className="text-white font-medium pl-2 ">
           {text}

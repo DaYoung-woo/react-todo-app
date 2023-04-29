@@ -12,7 +12,6 @@ export default function AppTodo() {
   );
 
   useEffect(() => {
-    console.log(list);
     localStorage.setItem("myTodoList", JSON.stringify(list));
   }, [list]);
 
@@ -23,11 +22,21 @@ export default function AppTodo() {
   const addTodo = (text) => {
     setList(list.concat({ text, isComplete: false }));
   };
+
+  const checkTodo = (text) => {
+    setList(
+      list.map((el) => {
+        return el.text === text ? { ...el, isComplete: !el.isComplete } : el;
+      })
+    );
+    console.log(list);
+  };
+
   return (
     <div className="App justify-center items-center">
       <div className="rounded-xl shadow-lg card-size">
         <TodoHeader changeMode={changeMode} mode={mode} />
-        <TodoList list={list} />
+        <TodoList list={list} checkTodo={checkTodo} />
         <TodoBottom addTodo={addTodo} />
       </div>
     </div>
