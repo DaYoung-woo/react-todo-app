@@ -32,11 +32,15 @@ export default function AppTodo() {
     console.log(list);
   };
 
+  const deleteTodo = (text) => {
+    setList(list.filter((el) => el.text !== text));
+  };
+
   return (
     <div className="App justify-center items-center">
       <div className="rounded-xl shadow-lg card-size">
         <TodoHeader changeMode={changeMode} mode={mode} />
-        <TodoList list={list} checkTodo={checkTodo} />
+        <TodoList list={list} checkTodo={checkTodo} deleteTodo={deleteTodo} />
         <TodoBottom addTodo={addTodo} />
       </div>
     </div>

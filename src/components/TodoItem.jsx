@@ -1,4 +1,4 @@
-export default function TodoItem({ text, isComplete, checkTodo }) {
+export default function TodoItem({ text, isComplete, checkTodo, deleteTodo }) {
   return (
     <li className="pt-2 flex justify-between">
       <div className="flex items-center">
@@ -14,7 +14,11 @@ export default function TodoItem({ text, isComplete, checkTodo }) {
           {text}
         </label>
       </div>
-      <button type="button" className="bg-white rounded-full w-5 h-5">
+      <button
+        type="button"
+        className="bg-white rounded-full w-5 h-5"
+        onClick={() => deleteTodo(text)}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
