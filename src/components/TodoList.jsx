@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import TodoItem from "./TodoItem";
-import ThemeContext from "../context/ThemeContext";
+import { useTheme } from "../context/ThemeContext";
 
 function filterTodoList(list, mode) {
   return mode === "All"
@@ -13,12 +13,17 @@ function filterTodoList(list, mode) {
 }
 
 export default function TodoList({ list, checkTodo, deleteTodo, mode }) {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
   return (
     <div className={`list-body ${theme}`}>
       <ul className="px-4 py-4">
         {filterTodoList(list, mode).map((todo) => (
-          <TodoItem todo={todo} checkTodo={checkTodo} deleteTodo={deleteTodo} />
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            checkTodo={checkTodo}
+            deleteTodo={deleteTodo}
+          />
         ))}
       </ul>
     </div>

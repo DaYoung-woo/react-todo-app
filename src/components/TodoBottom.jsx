@@ -1,8 +1,7 @@
-import React, { useState, useContext } from "react";
-import ThemeContext from "../context/ThemeContext";
-
+import React, { useState } from "react";
+import { useTheme } from "../context/ThemeContext";
 export default function TodoBottom({ addTodo }) {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
   const [text, setText] = useState("");
 
   const onChange = (e) => {

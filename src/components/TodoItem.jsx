@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import ThemeContext from "../context/ThemeContext";
+import React from "react";
+import { useTheme } from "../context/ThemeContext";
 
 export default function TodoItem({ todo, checkTodo, deleteTodo }) {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
 
   return (
     <li className="pt-2 flex justify-between">
