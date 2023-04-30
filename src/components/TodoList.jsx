@@ -1,26 +1,30 @@
-import React, { useContext } from "react";
+import React from "react";
 import TodoItem from "./TodoItem";
-import ThemeContext from "./ThemeContext";
+import { useTheme } from "../context/ThemeContext";
+
+function filterTodoList(list, mode) {
+  return mode === "All"
+    ? list
+    : list.filter(
+        (el) =>
+          (mode === "Completed" && el.isComplete) ||
+          (mode === "Active" && !el.isComplete)
+      );
+}
+
 export default function TodoList({ list, checkTodo, deleteTodo, mode }) {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
   return (
     <div className={`list-body ${theme}`}>
       <ul className="px-4 py-4">
-        {list.map((todo) =>
-          mode === "All" ||
-          (mode === "Active" && !todo.isComplete) ||
-          (mode === "Completed" && todo.isComplete) ? (
-            <TodoItem
-              isComplete={todo.isComplete}
-              text={todo.text}
-              key={todo.text}
-              checkTodo={checkTodo}
-              deleteTodo={deleteTodo}
-            />
-          ) : (
-            <></>
-          )
-        )}
+        {filterTodoList(list, mode).map((todo) => (
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            checkTodo={checkTodo}
+            deleteTodo={deleteTodo}
+          />
+        ))}
       </ul>
     </div>
   );
