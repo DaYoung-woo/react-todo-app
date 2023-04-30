@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import ThemeContext from "./ThemeContext";
 
-export default function TodoItem({ text, isComplete, checkTodo, deleteTodo }) {
+export default function TodoItem({ todo, checkTodo, deleteTodo }) {
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -12,12 +12,12 @@ export default function TodoItem({ text, isComplete, checkTodo, deleteTodo }) {
           className={`${
             theme === "dark" ? "accent-sky-600" : "accent-red-500"
           }`}
-          id={text}
-          checked={isComplete}
-          onClick={() => checkTodo(text)}
+          id={todo.id}
+          checked={todo.isComplete}
+          onClick={() => checkTodo(todo.id)}
         />
-        <label htmlFor={text} className="font-medium pl-2 ">
-          {text}
+        <label htmlFor={todo.text} className="font-medium pl-2 ">
+          {todo.text}
         </label>
       </div>
       <button
@@ -25,7 +25,7 @@ export default function TodoItem({ text, isComplete, checkTodo, deleteTodo }) {
         className={`rounded-full w-5 h-5 ${
           theme === "dark" ? "bg-white" : "bg-red-400"
         }`}
-        onClick={() => deleteTodo(text)}
+        onClick={() => deleteTodo(todo.id)}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

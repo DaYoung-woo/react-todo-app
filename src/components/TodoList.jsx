@@ -11,9 +11,7 @@ export default function TodoList({ list, checkTodo, deleteTodo, mode }) {
           (mode === "Active" && !todo.isComplete) ||
           (mode === "Completed" && todo.isComplete) ? (
             <TodoItem
-              isComplete={todo.isComplete}
-              text={todo.text}
-              key={todo.text}
+              todo={todo}
               checkTodo={checkTodo}
               deleteTodo={deleteTodo}
             />

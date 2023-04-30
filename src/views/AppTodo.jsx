@@ -3,6 +3,7 @@ import TodoHeader from "../components/TodoHeader";
 import TodoList from "../components/TodoList";
 import TodoBottom from "../components/TodoBottom";
 import ThemeProvider from "../components/ThemeProvider";
+import { v4 as uuidv4 } from "uuid";
 
 export default function AppTodo() {
   const [mode, setMode] = useState("All");
@@ -16,14 +17,17 @@ export default function AppTodo() {
     else {
       const TodoList = [
         {
+          id: 1,
           text: "리액트 강의 듣기",
           isComplete: true,
         },
         {
+          id: 2,
           text: "Todo App 만들기",
           isComplete: true,
         },
         {
+          id: 3,
           text: "Youtube App 만들기",
           isComplete: false,
         },
@@ -38,19 +42,19 @@ export default function AppTodo() {
   }, [list]);
 
   const addTodo = (text) => {
-    setList(list.concat({ text, isComplete: false }));
+    setList(list.concat({ id: uuidv4(), text, isComplete: false }));
   };
 
-  const checkTodo = (text) => {
+  const checkTodo = (id) => {
     setList(
       list.map((el) => {
-        return el.text === text ? { ...el, isComplete: !el.isComplete } : el;
+        return el.id === id ? { ...el, isComplete: !el.isComplete } : el;
       })
     );
   };
 
-  const deleteTodo = (text) => {
-    setList(list.filter((el) => el.text !== text));
+  const deleteTodo = (id) => {
+    setList(list.filter((el) => el.id !== id));
   };
 
   return (
