@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import MenuButton from "./MenuButton";
-import ThemeContext from "./ThemeContext";
+import ThemeContext from "../context/ThemeContext";
 export default function ListHeader({ changeMode, mode }) {
   const { theme, toggleTheme } = useContext(ThemeContext);
 

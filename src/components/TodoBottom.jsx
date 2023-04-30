@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import ThemeContext from "./ThemeContext";
+import ThemeContext from "../context/ThemeContext";
 
 export default function TodoBottom({ addTodo }) {
   const { theme } = useContext(ThemeContext);

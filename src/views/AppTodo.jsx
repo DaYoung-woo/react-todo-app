@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import TodoHeader from "../components/TodoHeader";
 import TodoList from "../components/TodoList";
 import TodoBottom from "../components/TodoBottom";
-import ThemeProvider from "../components/ThemeProvider";
+import ThemeProvider from "../context/ThemeProvider";
 import { v4 as uuidv4 } from "uuid";
 
 export default function AppTodo() {

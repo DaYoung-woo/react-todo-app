@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import TodoItem from "./TodoItem";
-import ThemeContext from "./ThemeContext";
+import ThemeContext from "../context/ThemeContext";
 export default function TodoList({ list, checkTodo, deleteTodo, mode }) {
   const { theme } = useContext(ThemeContext);
   return (
