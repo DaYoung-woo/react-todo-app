@@ -10,11 +10,28 @@ export default function AppTodo() {
     setMode(mode);
   };
 
-  const [list, setList] = useState(
-    localStorage.getItem("myTodoList")
-      ? JSON.parse(localStorage.getItem("myTodoList"))
-      : []
-  );
+  const [list, setList] = useState(() => {
+    if (localStorage.getItem("myTodoList"))
+      return JSON.parse(localStorage.getItem("myTodoList"));
+    else {
+      const TodoList = [
+        {
+          text: "리액트 강의 듣기",
+          isComplete: true,
+        },
+        {
+          text: "Todo App 만들기",
+          isComplete: true,
+        },
+        {
+          text: "Youtube App 만들기",
+          isComplete: false,
+        },
+      ];
+      localStorage.setItem("myTodoList", JSON.stringify(TodoList));
+      return TodoList;
+    }
+  });
 
   useEffect(() => {
     localStorage.setItem("myTodoList", JSON.stringify(list));
