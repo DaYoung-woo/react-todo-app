@@ -1,22 +1,30 @@
+import React, { useContext } from "react";
+import ThemeContext from "./ThemeContext";
+
 export default function TodoItem({ text, isComplete, checkTodo, deleteTodo }) {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <li className="pt-2 flex justify-between">
       <div className="flex items-center">
-        {isComplete}
         <input
           type="checkbox"
-          className="accent-sky-600"
+          className={`${
+            theme === "dark" ? "accent-sky-600" : "accent-red-500"
+          }`}
           id={text}
           checked={isComplete}
           onClick={() => checkTodo(text)}
         />
-        <label htmlFor="test" className="text-white font-medium pl-2 ">
+        <label htmlFor={text} className="font-medium pl-2 ">
           {text}
         </label>
       </div>
       <button
         type="button"
-        className="bg-white rounded-full w-5 h-5"
+        className={`rounded-full w-5 h-5 ${
+          theme === "dark" ? "bg-white" : "bg-red-400"
+        }`}
         onClick={() => deleteTodo(text)}
       >
         <svg
@@ -24,7 +32,7 @@ export default function TodoItem({ text, isComplete, checkTodo, deleteTodo }) {
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
-          stroke="blue"
+          stroke={theme === "dark" ? "blue" : "white"}
           className="w-4 h-4 mx-auto my-auto"
         >
           <path

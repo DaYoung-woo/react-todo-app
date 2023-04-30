@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-
+import React, { useState, useContext } from "react";
+import ThemeContext from "./ThemeContext";
 export default function TodoBottom({ addTodo }) {
+  const { theme } = useContext(ThemeContext);
   const [text, setText] = useState("");
 
   const onChange = (e) => {
@@ -8,7 +9,7 @@ export default function TodoBottom({ addTodo }) {
   };
 
   return (
-    <div className="card-header rounded-b-xl flex items-center px-4">
+    <div className={`card-header rounded-b-xl flex items-center px-4 ${theme}`}>
       <input
         type="text"
         className="h-9 w-72 rounded-l-lg pl-3"
@@ -17,7 +18,7 @@ export default function TodoBottom({ addTodo }) {
         value={text}
       />
       <button
-        className="bg-cyan-600 text-white h-9 w-24 rounded-r-lg hover:bg-cyan-500"
+        className={`add-btn h-9 w-24 rounded-r-lg ${theme}`}
         onClick={() => addTodo(text)}
       >
         add

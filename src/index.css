@@ -5,12 +5,17 @@
 html {
   height: 100vh;
   width: 100vw;
-  background: linear-gradient(to bottom right, #155e75, #042f2e);
 }
 
 .App {
   height: 100vh;
   display: flex;
+}
+.App.dark {
+  background: linear-gradient(to bottom right, #155e75, #042f2e);
+}
+.App.light {
+  background: linear-gradient(to bottom right, #fff7ed, #ffffff);
 }
 
 .card-size {
@@ -20,11 +25,60 @@ html {
 
 .card-header {
   height: 70px;
+}
+.card-header.dark {
   background-color: #1f2937;
 }
+.card-header.light {
+  background-color: #fca5a5;
+}
+
+.card-header-category.dark {
+  color: #0ea5e9;
+}
+.card-header-category:hover.dark {
+  color: #22d3ee;
+}
+.card-header-category.active.dark {
+  color: #bae6fd;
+}
+
+.card-header-category.light {
+  color: #f5f5f4;
+}
+.card-header-category:hover.light {
+  color: #f87171;
+}
+.card-header-category.active.light {
+  color: #ef4444;
+}
+
+.add-btn.dark {
+  color: white;
+  background-color: #0ea5e9;
+}
+.add-btn:hover.dark {
+  background-color: #22d3ee;
+}
+
+.add-btn.light {
+  color: white;
+  background-color: #ef4444;
+}
+.add-btn:hover.light {
+  background-color: #f87171;
+}
+
 .list-body {
   height: 360px;
+}
+.list-body.dark {
   background-color: #374151;
+  color: #ffffff;
+}
+.list-body.light {
+  background-color: #fef2f2;
+  color: #292524;
 }
 
 input[type="checkbox"] {

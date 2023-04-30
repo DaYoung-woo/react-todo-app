@@ -1,12 +1,23 @@
+import React, { useContext } from "react";
+import ThemeContext from "./ThemeContext";
 export default function MenuButton({ text, pd, mode, changeMode }) {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <button
-      type="button"
-      onClick={() => changeMode(text)}
-      className={`text-md ${mode === text ? "" : "hover:text-cyan-400"}
-        ${pd} ${mode === text ? "text-cyan-200" : "text-cyan-500"}`}
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        changeMode(text);
+      }}
     >
-      {text}
-    </button>
+      <button
+        type="button"
+        onClick={() => changeMode(text)}
+        className={`text-md card-header-category ${pd} ${theme}
+        ${mode === text ? "active" : ""}`}
+      >
+        {text}
+      </button>
+    </form>
   );
 }
