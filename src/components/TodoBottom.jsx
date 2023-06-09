@@ -1,12 +1,12 @@
-import React, { useState, useContext } from "react";
-import ThemeContext from "./ThemeContext";
-export default function TodoBottom({ addTodo }) {
-  const { theme } = useContext(ThemeContext);
-  const [text, setText] = useState("");
+import React, { useState, useContext } from 'react'
+import ThemeContext from './ThemeContext'
+export default function TodoBottom ({ addTodo }) {
+  const { theme } = useContext(ThemeContext)
+  const [text, setText] = useState('')
 
   const onChange = (e) => {
-    setText(e.target.value);
-  };
+    setText(e.target.value)
+  }
 
   return (
     <div className={`card-header rounded-b-xl flex items-center px-4 ${theme}`}>
@@ -24,5 +24,5 @@ export default function TodoBottom({ addTodo }) {
         add
       </button>
     </div>
-  );
+  )
 }

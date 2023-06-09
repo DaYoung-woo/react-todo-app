@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import ThemeContext from "./ThemeContext";
+import React, { useState } from 'react'
+import ThemeContext from './ThemeContext'
 
 const ThemeProvider = (props) => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState('light')
 
   const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
+    setTheme(theme === 'light' ? 'dark' : 'light')
+  }
 
   return (
     <div className={`App justify-center items-center ${theme}`}>
@@ -16,7 +16,7 @@ const ThemeProvider = (props) => {
         </ThemeContext.Provider>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ThemeProvider;
+export default ThemeProvider
