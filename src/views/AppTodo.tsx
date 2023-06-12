@@ -4,15 +4,24 @@ import TodoList from '../components/TodoList'
 import TodoBottom from '../components/TodoBottom'
 import ThemeProvider from '../components/ThemeProvider'
 
-export default function AppTodo () {
+interface todoItemType {
+  text: string
+  isComplete: boolean
+}
+
+export default function AppTodo (): JSX.Element {
   const [mode, setMode] = useState('All')
-  const changeMode = (mode) => {
+  const changeMode = (mode: string): void => {
     setMode(mode)
   }
 
   const [list, setList] = useState(() => {
-    if (localStorage.getItem('myTodoList')) { return JSON.parse(localStorage.getItem('myTodoList')) } else {
-      const TodoList = [
+    const localTodoList: string | null = localStorage.getItem('myTodoList')
+    if (localTodoList !== null) {
+      const myTodoList: todoItemType[] = JSON.parse(localTodoList)
+      return myTodoList
+    } else {
+      const TodoList: todoItemType[] = [
         {
           text: '리액트 강의 듣기',
           isComplete: true
@@ -35,19 +44,19 @@ export default function AppTodo () {
     localStorage.setItem('myTodoList', JSON.stringify(list))
   }, [list])
 
-  const addTodo = (text) => {
+  const addTodo = (text: string): void => {
     setList(list.concat({ text, isComplete: false }))
   }
 
-  const checkTodo = (text) => {
+  const checkTodo = (text: string): void => {
     setList(
-      list.map((el) => {
+      list.map((el: todoItemType) => {
         return el.text === text ? { ...el, isComplete: !el.isComplete } : el
       })
     )
   }
 
-  const deleteTodo = (text) => {
+  const deleteTodo = (text: string): void => {
     setList(list.filter((el) => el.text !== text))
   }
 
