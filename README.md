@@ -6,6 +6,10 @@ context와 localstorage를 사용하여 다크모드를 지원하고 있습니�
 
 [사이트 접속](https://fastidious-gumdrop-97466c.netlify.app)
 
+
+https://github.com/DaYoung-woo/react-todo-app/assets/131967254/456348b8-cae2-4951-ab90-23a6833869a6
+
+
 ![image](https://github.com/DaYoung-woo/react-todo-app/assets/131967254/1a10e01d-c72f-419c-b37c-2ddc6f5c58e8)  
 ![image](https://github.com/DaYoung-woo/react-todo-app/assets/131967254/1a4f50a7-64f3-46ce-8bc5-d4deae4098a4)  
 상단 오른쪽 아이콘을 클릭하면 다크모드로 사용할 수 있습니다.
