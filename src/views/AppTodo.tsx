@@ -1,21 +1,16 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import TodoHeader from "../components/TodoHeader";
 import TodoList from "../components/TodoList";
 import TodoBottom from "../components/TodoBottom";
 import ThemeProvider from "../components/ThemeProvider";
 
-interface todoItemType {
-  text: string;
-  isComplete: boolean;
-}
-
 export default function AppTodo() {
-  const [mode, setMode] = useState("All");
-  const changeMode = (mode: string): void => {
+  const [mode, setMode] = useState<modeType>("All");
+  const changeMode = (mode: modeType): void => {
     setMode(mode);
   };
 
-  const [list, setList] = useState(() => {
+  const [list, setList] = useState<todoItemType[]>(() => {
     const localTodoList: string | null = localStorage.getItem("myTodoList");
     if (localTodoList !== null) {
       const myTodoList: todoItemType[] = JSON.parse(localTodoList);
@@ -52,23 +47,18 @@ export default function AppTodo() {
     setList(
       list.map((el: todoItemType) => {
         return el.text === text ? { ...el, isComplete: !el.isComplete } : el;
-      })
+      }),
     );
   };
 
   const deleteTodo = (text: string): void => {
-    setList(list.filter((el) => el.text !== text));
+    setList(list.filter(el => el.text !== text));
   };
 
   return (
     <ThemeProvider>
       <TodoHeader changeMode={changeMode} mode={mode} />
-      <TodoList
-        mode={mode}
-        list={list}
-        checkTodo={checkTodo}
-        deleteTodo={deleteTodo}
-      />
+      <TodoList list={list} checkTodo={checkTodo} deleteTodo={deleteTodo} mode={mode} />
       <TodoBottom addTodo={addTodo} />
     </ThemeProvider>
   );
