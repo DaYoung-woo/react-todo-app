@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
 import ThemeContext from "./ThemeContext";
-export default function TodoBottom({ addTodo }) {
+const TodoBottom: React.FC<TodoBottomProps> = ({ addTodo }) => {
   const { theme } = useContext(ThemeContext);
-  const [text, setText] = useState("");
+  const [text, setText] = useState<string>("");
 
-  const onChange = e => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
 
@@ -22,4 +22,6 @@ export default function TodoBottom({ addTodo }) {
       </button>
     </div>
   );
-}
+};
+
+export default TodoBottom;
