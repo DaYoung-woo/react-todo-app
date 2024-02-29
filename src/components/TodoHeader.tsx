@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
-import MenuButton from './MenuButton'
-import ThemeContext from './ThemeContext'
-export default function ListHeader ({ changeMode, mode }) {
-  const { theme, toggleTheme } = useContext(ThemeContext)
+import React, { useContext } from "react";
+import MenuButton from "./MenuButton";
+import ThemeContext from "./ThemeContext";
+const ListHeader: React.FC<TodoHeaderProps> = ({ changeMode, mode }) => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
     <div
@@ -10,18 +10,8 @@ export default function ListHeader ({ changeMode, mode }) {
     >
       <div className="flex">
         <MenuButton text="All" changeMode={changeMode} mode={mode} />
-        <MenuButton
-          text="Active"
-          pd="pl-4"
-          changeMode={changeMode}
-          mode={mode}
-        />
-        <MenuButton
-          text="Completed"
-          pd="pl-4"
-          changeMode={changeMode}
-          mode={mode}
-        />
+        <MenuButton text="Active" pd="pl-4" changeMode={changeMode} mode={mode} />
+        <MenuButton text="Completed" pd="pl-4" changeMode={changeMode} mode={mode} />
       </div>
 
       <button>
@@ -29,7 +19,7 @@ export default function ListHeader ({ changeMode, mode }) {
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          stroke={theme === 'light' ? 'black' : 'white'}
+          stroke={theme === "light" ? "black" : "white"}
           className="w-6 h-6"
           onClick={() => toggleTheme()}
         >
@@ -37,5 +27,7 @@ export default function ListHeader ({ changeMode, mode }) {
         </svg>
       </button>
     </div>
-  )
-}
+  );
+};
+
+export default ListHeader;
