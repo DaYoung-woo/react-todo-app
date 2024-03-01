@@ -11,7 +11,7 @@ export default function TodoItem({ text, isComplete, checkTodo, deleteTodo }) {
           type="checkbox"
           className={`${theme === "dark" ? "accent-sky-600" : "accent-red-500"}`}
           id={text}
-          checked={isComplete}
+          defaultChecked={isComplete}
           onClick={() => checkTodo(text)}
         />
         <label htmlFor={text} className="font-medium pl-2 ">

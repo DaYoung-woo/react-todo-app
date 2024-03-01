@@ -27,3 +27,5 @@ type MenuButtonProps = {
 type TodoBottomProps = {
   addTodo: (text: string) => void;
 };
+
+type themeType = "light" | "dark";
